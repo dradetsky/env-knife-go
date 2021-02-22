@@ -113,6 +113,7 @@ func Build(cfg Config) {
 	if cfg.Screen != nil {
 		screenCmd := &cobra.Command{
 			Use: "screen",
+			Aliases: []string{"s"},
 			Short: "hello screen",
 			Long: "hello hello hello screen",
 		}
@@ -133,6 +134,7 @@ func Build(cfg Config) {
 	if cfg.Monitor != nil {
 		monitorCmd := &cobra.Command{
 			Use: "monitor",
+			Aliases: []string{"m"},
 			Short: "hello monitor",
 			Long: "hello hello hello monitor",
 		}
@@ -151,6 +153,7 @@ func Build(cfg Config) {
 	if cfg.Net != nil {
 		netCmd := &cobra.Command{
 			Use: "net",
+			Aliases: []string{"n"},
 			Short: "hello net",
 			Long: "hello hello hello net",
 		}
