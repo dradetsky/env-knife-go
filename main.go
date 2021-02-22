@@ -70,14 +70,23 @@ func CurrentScreens() map[string]bool {
 	return ret
 }
 
+func MakeOneScreen(name string, path string) {
+	fmt.Printf("MAKING %s (%s)\n", name, path)
+	pipeline := fmt.Sprintf(
+		"(cd %s ; screen -S %s -t %s -d -m -fn)",
+		path, name, name,
+	)
+	c := exec.Command("/bin/sh", "-c", pipeline)
+	c.Run()
+}
+
 func MakeScreens(screens map[string]string) {
 	names := CurrentScreens()
 	for name, path := range screens {
-		fmt.Printf("%s: %s\n", name, path)
 		if names[name] {
 			fmt.Printf("have %s\n", name)
 		} else {
-			fmt.Printf("need %s\n", name)
+			MakeOneScreen(name, path)
 		}
 	}
 }
